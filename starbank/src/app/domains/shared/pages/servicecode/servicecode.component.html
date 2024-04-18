@@ -1,0 +1,21 @@
+<div class="fullcolor">
+  <div class="login-container">
+    @if(srvCode == true)
+    {
+      <div class="error-message">
+        <p>Código de servicio incorrecto. Por favor, verifique el código.</p>
+      </div>
+    }
+    <div>
+      <form (ngSubmit)="submitCode()">
+        <div class="form-group">
+          <label for="nip">Código de servicio</label>
+          <input type="password" [value]="codigo()" placeholder="0000" (change)="changeCode($event)">
+        </div>
+        <div class="content-center">
+        <button type="submit" (click)="submitCode()">INGRESAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

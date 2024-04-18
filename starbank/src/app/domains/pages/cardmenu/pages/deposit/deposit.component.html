@@ -1,0 +1,26 @@
+<body>
+  <div class="atm-menu">
+    <div class="center">
+      <div class="content-center">
+        <div class="align-top">
+          <h1>Depositar dinero</h1>
+        </div>
+        <div class="form-container">
+          @if(alertaDivisor)
+          {
+            <div class="error-message">
+              <p>        Cantidad a retirar no válida.        </p>
+            </div>
+          }
+          <form>
+            <label for="amount" class="form-label">Monto a depositar:</label>
+            <div class="input-group">
+              <input type="text" [value]="dinero()" class="input-field" placeholder="Ingrese el monto" (input)="changeDinero($event)">
+              <button type="submit" class="button" (click)="depositar()">Depositar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

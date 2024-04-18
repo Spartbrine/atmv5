@@ -1,0 +1,47 @@
+<body>
+  <div class="atm-menu">
+    <div class="center">
+      <div class="content-center">
+        <div class="align-top">
+          <h1>Menu de tarjetas {{tarjeta?.typeCard}}</h1>
+        </div>
+      <div>
+          <ul class="button-list">
+            @if(tarjeta?.typeCard == 'DEBITO')
+            {
+              <li>
+                <a (click)="retirarDinero()" class="button">Retirar dinero</a>
+              </li>
+              <li>
+                <a href="/balance" class="button">Consultar saldo</a>
+              </li>
+              <li>
+                <a href="/deposit" class="button">Depositar dinero</a>
+              </li>
+            }
+            @if(tarjeta?.typeCard=='CREDITO')
+            {
+
+              <li>
+                <a href="/creditcard" class="button">Pagar tarjeta de crédito</a>
+              </li>
+            }
+            <li>
+              <a href="/credits" class="button">Pagar créditos</a>
+            </li>
+            <li>
+              <a href="/services" class="button">Pagar servicios</a>
+            </li>
+            <li>
+              <a href="/changenip" class="button">Cambiar nip</a>
+            </li>
+            <li>
+              <a href="/" class="button">Regresar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>

@@ -1,0 +1,38 @@
+<div class="content-center">
+  <div class="fullcolor">
+    <div class="container-left">
+      <div id="saldo-container">
+          <h1 class="saldo">Datos de la Tarjeta</h1>
+          <div class="contenido">
+            @if(valoresDC()?.balance)
+            {
+              <p>Saldo disponible : {{ valoresDC()?.balance }}</p>
+            }
+            @if(valoresCC()?.creditLimit)
+            {
+              <p>Credito disponible : {{ valoresCC()?.creditLimit}}</p>
+            }
+          </div>
+      </div>
+    </div>
+
+    <div class="container-right">
+      <div class="operaciones-container">
+          <h2>Operaciones</h2>
+          <button id="retirar-btn" (click)="retirarDinero()">Retirar</button>
+
+          @if(valoresCC()?.creditLimit)
+          {
+            <button id="depositar-btn" (click)="pagarCredito()">Pagar credito de la tarjeta</button>
+          }
+          @if(valoresDC()?.balance)
+          {
+            <button id="depositar-btn" (click)="depositarDebito()">Depositar</button>
+          }
+
+          <!-- Botón de regreso -->
+          <a href="#" class="regresar-btn">Regresar</a>
+      </div>
+    </div>
+  </div>
+</div>

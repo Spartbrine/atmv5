@@ -1,0 +1,35 @@
+<div class="fullcolor">
+  <div class="login-container">
+    <div class="content-center">
+      <h2>Ingresar tarjeta</h2>
+    </div>
+    @if(mostrarAlerta)
+    {
+      <div class="alerta">
+        <p>Por favor, complete todos los campos.</p>
+      </div>
+    }
+
+    @if(tarjetaNoEncontrada)
+    {
+      <div class="error-message">
+        <p>La tarjeta no se encontró. Por favor, verifica el número de tarjeta ingresado.</p>
+      </div>
+    }
+
+
+    <div>
+      <form (ngSubmit)="submitLogin()">
+        <div class="form-group">
+          <div class="form-group">
+            <label for="tarjeta">Número de tarjeta</label>
+            <input type="text" [value]="tarjeta().card" placeholder="0000000000000000" (change)="changeCard($event)">
+          </div>
+        </div>
+        <button type="submit">INGRESAR NIP</button>
+        <a href="/" class="regresar">Regresar</a>
+      </form>
+    </div>
+  </div>
+
+</div>

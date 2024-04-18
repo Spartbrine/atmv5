@@ -1,0 +1,24 @@
+<div class="fullcolor">
+  <div class="full-color">
+    <div class="login-container">
+      @if(nipNoEncontrado == true)
+      {
+        <div class="error-message">
+          <p>NIP incorrecto. Por favor, verifica el NIP.</p>
+        </div>
+      }
+      <div>
+        <form (ngSubmit)="submitNIP()">
+          <div class="form-group">
+            <label for="nip">NIP</label>
+            <input type="password" [value]="nip()" placeholder="0000" (change)="changeNip($event)">
+          </div>
+          <div class="content-center">
+          <button type="submit" (click)="submitNIP()">INGRESAR</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

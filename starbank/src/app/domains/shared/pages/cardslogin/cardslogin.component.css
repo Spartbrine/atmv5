@@ -1,0 +1,130 @@
+.fullcolor {
+  background-color: #6cc09c;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 50px;
+}
+
+.login-container {
+  width: 350px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #88e690;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724; /* Color de texto verde oscuro */
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #c3e6cb;
+  border-radius: 5px; /* Bordes redondeados */
+  margin-bottom: 10px; /* Espacio inferior */
+}
+.regresar {
+  margin: 0 auto;
+  padding: 10px 20px;
+  border: 5px;
+  border-radius: 5px;
+  background-color: #dc3545;
+  color: #000000;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.regresar:hover {
+  background-color: #c82333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333; /* Color de texto más oscuro */
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  margin: 0 auto;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background-color: #2ec250;
+  color: #000000;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Transición suave para color de fondo y borde */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"] {
+  background-color: #30924d;
+}
+
+button[type="button"] {
+  background-color: #dc3545;
+}
+
+button:hover {
+  background-color: #218838;
+  border-color: #218838; /* Cambiar el color del borde al pasar el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #333;
+}
+
+.alerta {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #721c24;
+}
+
+.error-message {
+  background-color: #ffe5e5;
+  color: #c00;
+  border: 1px solid #c00;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+a[type="submit"] {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  background-color: #218838;
+}

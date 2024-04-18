@@ -1,0 +1,24 @@
+<div class="content-center">
+  <div class="menu-container">
+    <h1>MENU CRÉDITOS</h1>
+    <div class="botones-container">
+      @if(activeHipotecario)
+      {
+        <button class="boton hipotecario" (click)="pagarHipo()">Crédito Hipotecario</button>
+      }
+      @if(activeEstudiantil)
+      {
+        <button class="boton estudiantil" (click)="pagarEst()">Crédito Estudiantil</button>
+      }
+      @if(activeAutomovil)
+      {
+        <button class="boton carro" (click)="pagarMovil()">Crédito de Carro</button>
+      }
+    </div>
+    <div class="botones-container">
+      <a href="/cards" class="button">Menu principal</a>
+      <a href="/" class="button">Cancelar operaciones</a>
+    </div>
+
+  </div>
+</div>

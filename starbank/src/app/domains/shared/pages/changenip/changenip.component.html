@@ -1,0 +1,15 @@
+<div class="fullcolor">
+  <div class="login-container">
+    <div>
+      <form (ngSubmit)="submitNIP()">
+        <div class="form-group">
+          <label for="nip">NIP</label>
+          <input type="text" [value]="nip()" placeholder="0000" (change)="changeNip($event)">
+        </div>
+        <div class="content-center">
+        <button type="submit" (click)="submitNIP()">INGRESAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+/* Estilos para el cuerpo de la página */
+body {
+  background-color: #6cc09c;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Estilos para el contenedor principal */
+.service-container {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+/* Estilos para centrar el contenido */
+.content-center {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos para los títulos */
+.content-center h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+/* Contenedor de botones */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Estilos para los botones */
+.pay-button, .cancel-button {
+  border: 2px solid #2f6648;
+  border-radius: 5px;
+  background-color: #9bd4af;
+  color: #333;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.cancel-button {
+  background-color: #ff6b6b;
+  border-color: #c0392b;
+}
+
+.pay-button:hover, .cancel-button:hover {
+  background-color: #7ec395;
+  border-color: #1e3a29;
+}
+
+.pay-button:active, .cancel-button:active {
+  background-color: #6aa984;
+  border-color: #142d21;
+}
+
+/* Contenedor de cada servicio */
+.service-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.service-details {
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+
+/* Estilos para la sección de contrato y deuda */
+.contract-section {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 30%;
+  min-width: 300px;
+}
+
+.contract-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.contract-details {
+  margin-bottom: 20px;
+}
+
+.contract-details p {
+  margin-bottom: 10px;
+}
+

@@ -1,0 +1,35 @@
+<div class="atm-menu">
+  <div class="content-center">
+    <h1> Servicios registrados</h1>
+  </div>
+  <div>
+    <div>
+      <ul >
+        @for (service of services(); track service)
+        {
+          @if(service.debt > 0)
+          {
+            <li>
+              <div class="button-container">
+                  <button class="service-button">
+                    <div class="service-content">
+                      <p>{{service.name}}</p>
+                    </div>
+                  </button>
+              </div>
+            </li>
+          }
+        }
+
+        <div class="button-container">
+          <li>
+            <a routerLink="/" class="service-button">Cancelar operación</a>
+          </li>
+        </div>
+
+      </ul>
+    </div>
+  </div>
+
+
+</div>

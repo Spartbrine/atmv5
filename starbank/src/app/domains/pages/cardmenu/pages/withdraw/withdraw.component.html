@@ -1,0 +1,31 @@
+<body>
+  <div class="content-center">
+    <h1>Retirar dinero</h1>
+  </div>
+  <div class="content-center">
+    @if(alertaDivisor)
+    {
+      <div class="error-message">
+        <p>        Cantidad a retirar no válida.        </p>
+      </div>
+    }
+    <form>
+      @if(valoresDC())
+      {
+        <div class="form-group">
+          <p>Tarjeta : {{ valoresDC().card }}  </p>
+        </div>
+        <div class="form-group">
+          <p>Saldo disponible: {{ valoresDC().balance }}</p>
+        </div>
+      }
+      <div>
+        <label for="retirar">Monto a retirar:</label>
+        <div>
+          <input type="text"[value]="dinero()" placeholder="0000$" (input)="changeDinero($event)">
+        </div>
+        <button type="submit" (click)="submitRetiro()" >retirar</button>
+      </div>
+    </form>
+  </div>
+</body>

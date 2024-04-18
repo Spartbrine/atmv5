@@ -1,0 +1,133 @@
+body {
+  background-color: #6cc09c; /* Color de fondo principal, verde más suave */
+  margin: 0; /* Elimina el margen predeterminado */
+  font-family: Arial, sans-serif; /* Tipo de fuente para el texto */
+  line-height: 1.6; /* Espaciado entre líneas */
+}
+.login-container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.regresar
+{
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  background-color: #dc3545; /* Color rojo para botón de cancelar */
+}
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+}
+
+button[type="button"] {
+  background-color: #dc3545;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+
+.content-center {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.content-center h2 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.alerta {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 1px solid red;
+}
+
+.error-message {
+  background-color: #ffe5e5; /* Color de fondo */
+  color: #c00; /* Color del texto */
+  border: 1px solid #c00; /* Borde */
+  padding: 10px; /* Espaciado interno */
+  margin-bottom: 20px; /* Espaciado inferior */
+  border-radius: 5px; /* Borde redondeado */
+}
+
+/* Estilos para un elemento <a> con atributo 'type' igual a 'submit' */
+a[type="submit"] {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  background-color: #28a745;
+}
+
+
+/* Estilos para el hover de cualquier elemento <a> */
+a:hover {
+  background-color: #0056b3;
+}
+
+.salir {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff0000; /* Color de fondo */
+  color: #ffffff; /* Color del texto */
+  text-decoration: none; /* Quita el subrayado del enlace */
+  border-radius: 5px; /* Borde redondeado */
+  transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+}
+
+.salir:hover {
+  background-color: #cc0000; /* Color de fondo al pasar el mouse */
+}

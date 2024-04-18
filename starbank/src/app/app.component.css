@@ -1,0 +1,12 @@
+body {
+  background-color: #6cc09c; /* Color de fondo principal, verde más suave */
+  margin: 0; /* Elimina el margen predeterminado */
+  font-family: Arial, sans-serif; /* Tipo de fuente para el texto */
+  line-height: 1.6; /* Espaciado entre líneas */
+}
+
+.atm-menu {
+  background-color: #6cc09c;
+  display: flex;
+  justify-content: center;
+}

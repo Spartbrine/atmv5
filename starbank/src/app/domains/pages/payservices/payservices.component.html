@@ -1,0 +1,34 @@
+<body>
+  <div class="content-center">
+    <h1> Servicios</h1>
+  </div>
+  <div>
+    <div>
+      <ul >
+        @for (service of services(); track service)
+        {
+          <li>
+            <div class="button-container">
+              <a href="service/{{ service.id }}">
+                <button class="service-button">
+                  <div class="service-content">
+                    <img [src]="service.img" alt="{{ service.name }}" class="service-image">
+                    <p>{{service.name}}</p>
+                  </div>
+                </button>
+              </a>
+            </div>
+          </li>
+        }
+
+        <div class="button-container">
+          <li>
+            <a routerLink="/" class="service-button">Cancelar operación</a>
+          </li>
+        </div>
+
+      </ul>
+    </div>
+  </div>
+</body>
+
