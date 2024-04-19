@@ -1,5 +1,5 @@
 import sqlite3
-
+from datetime import date
 from flask import jsonify
 
 def conectar_bd():
@@ -37,6 +37,14 @@ def verDato(cursor, tabla, condicion,id):
     nombresColumnas = darNombres(cursor)   
     
     return nombresColumnas
+
+def ContarDato(cursor, id):
+    hoy = date.today()
+    cursor.execute("SELECT COUNT(*) FROM transactions WHERE dateTransaction = ? AND id_user = ?", (hoy, id))
+    conteo = cursor.fetchone()[0]
+    return conteo
+
+
 def obtenerIdPorCondicion(cursor, tabla, condicion):
     consulta = f"SELECT id FROM {tabla} WHERE {condicion}"
     cursor.execute(consulta)

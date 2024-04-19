@@ -10,6 +10,7 @@ import { PartnersCreditsService } from '../solicitudes/partners-credits.service'
 import { GeneralCredit } from '../../models/general-credit.model';
 import { PartnersServicesService } from '../solicitudes/partners-services.service';
 import { ServicesService } from '../solicitudes/services.service';
+import { TransactionsService } from '../solicitudes/transactions.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +20,7 @@ export class CardsaveService {
   tarjetaCredVal = inject(CreditCardsService);
   tarjetaDebVal = inject(DebitCardsService);
   partnerServDebt = inject(ServicesService)
+  trService = inject(TransactionsService)
 
   private http = inject(HttpClient)
   getPartner = inject(PartnerService)
@@ -124,6 +126,17 @@ export class CardsaveService {
             }
         }
       );
+      this.trService.contarTr(idU).subscribe(
+        {
+          next:(valor)=>{
+            let val = JSON.stringify(valor)
+            console.log('Valores en oxiso', valor)
+            localStorage.setItem('transacciones', val)
+          }
+        }
+      )
+
+
     }
   }
 

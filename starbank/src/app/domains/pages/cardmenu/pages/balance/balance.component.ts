@@ -8,6 +8,9 @@ import { debitCard } from '../../../../shared/models/debitCard.model';
 import { CreditCardsaveService } from '../../../../shared/services/comunicadores/credit-cardsave.service';
 import { DebitCardsaveService } from '../../../../shared/services/comunicadores/debit-cardsave.service';
 import { Router } from '@angular/router';
+import { TransactionsService } from '../../../../shared/services/solicitudes/transactions.service';
+import { Partner } from '../../../../shared/models/partner.model';
+import { Transaction } from '../../../../shared/models/transaction.model';
 
 @Component({
   selector: 'app-balance',
@@ -100,19 +103,45 @@ export class BalanceComponent {
   }
 
 
-  pagarCredito()
+  regresar()
   {
-    this.router.navigate(['/creditcard']);
+    this.postTr('CONSULTA')
+    this.router.navigate(['/cards']);
   }
 
   depositarDebito()
   {
+    this.postTr('CONSULTA + DÉPOSITO')
     this.router.navigate(['/deposit']);
   }
 
   retirarDinero()
   {
+    this.postTr('CONSULTA + RETIRO')
     this.router.navigate(['/withdraw']);
+  }
+
+  transacciones = inject(TransactionsService)
+
+  postTr(tipo: string)
+  {
+    console.log('postTr')
+    let valores = localStorage.getItem('socio')
+    if(valores)
+    {
+      let usr: Partner[]= JSON.parse(valores)
+      console.log(usr[0])
+      console.log('id usr', usr[0].id)
+      let tr : Transaction = {
+      id_user:  usr[0].id,
+      typeTransaction: tipo,
+
+    }
+      console.log('id del usuario', tr)
+
+      this.transacciones.postearTransaccion(tr).subscribe({})
+    }
+
   }
 
 }

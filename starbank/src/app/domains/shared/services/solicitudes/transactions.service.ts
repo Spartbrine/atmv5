@@ -12,6 +12,12 @@ export class TransactionsService {
     return this.http.get<Transaction[]>('http://127.0.0.1:5000/transacciones/' + id_user)
   }
 
+  contarTr(id_user: string)
+  {
+    return this.http.get<Transaction[]>('http://127.0.0.1:5000/transacciones/fecha/' + id_user)
+
+  }
+
   //Para el post debo mandar el tipo de transaccion y el id del usuario
   postearTransaccion(transaccion : Transaction)
   {

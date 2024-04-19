@@ -23,32 +23,52 @@ export const routes: Routes = [
   },
   {
     path:'services', //Este es para cuando ya tenemos a los socios
-    loadComponent: () => import('./domains/pages/cardmenu/pages/services/services.component').then(m=>m.ServicesComponent)
+    children: [ //ASI xd
+      {
+        path:'',
+        loadComponent: () => import('./domains/pages/cardmenu/pages/services/services.component').then(m=>m.ServicesComponent),
+      },
+      {
+        path:'cfe',
+        loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/cfe/cfe.component').then(m=>m.CfeComponent)
+      },
+      {
+        path:'netflix',
+        loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/netflix/netflix.component').then(m=>m.NetflixComponent)
+      },
+      {
+        path:'japay',
+        loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/japay/japay.component').then(m=>m.JapayComponent)
+      },
+      {
+        path:'spotify',
+        loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/spotify/spotify.component').then(m=>m.SpotifyComponent)
+      },
+      {
+        path:'telmex',
+        loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/telmex/telmex.component').then(m=>m.TelmexComponent)
+      }
+    ]
   },
   {
     path:'servicecode', //Para cuando solo quiere pagar sin logearse
     loadComponent: () => import('./domains/shared/pages/servicecode/servicecode.component').then(m => m.ServicecodeComponent)
   },
-  {
-    path:'service/1',
-    loadComponent: () => import ('./domains/pages/payservices/pages/netflix/netflix.component').then(m=>m.NetflixComponent),
-  },
-  {
-    path:'service/2',
-    loadComponent: () => import ('./domains/pages/payservices/pages/spotify/spotify.component').then(m=>m.SpotifyComponent),
-  },
-  {
-    path:'service/3',
-    loadComponent: () => import ('./domains/pages/payservices/pages/japay/japay.component').then(m=>m.JapayComponent),
-  },
-  {
-    path:'service/4',
-    loadComponent: () => import ('./domains/pages/payservices/pages/cfe/cfe.component').then(m=>m.CfeComponent),
-  },
-  {
-    path:'service/5',
-    loadComponent: () => import ('./domains/pages/payservices/pages/telmex/telmex.component').then(m=>m.TelmexComponent),
-  },
+  // { asi no
+  //   path:'service/1',
+  // },
+  // {
+  //   path:'service/2',
+  // },
+  // {
+  //   path:'service/3',
+  // },
+  // {
+  //   path:'service/4',
+  // },
+  // {
+  //   path:'service/5',
+  // },
   {
     path:'withdraw',
     loadComponent: () => import ('./domains/pages/cardmenu/pages/withdraw/withdraw.component').then(m => m.WithdrawComponent)
@@ -57,6 +77,10 @@ export const routes: Routes = [
     path:'credits',
     loadComponent: () => import('./domains/pages/creditsmenu/creditsmenu.component').then(m => m.CreditsmenuComponent),
 
+  },
+  {
+    path:'automovil',
+    loadComponent: () => import('./domains/pages/creditsmenu/pages/car-credit/car-credit.component').then(m=>m.CarCreditComponent)
   },
   {
     path:'cardlogin',
@@ -72,11 +96,11 @@ export const routes: Routes = [
   },
   {
     path:'nota',
-    loadComponent:()=> import('./domains/shared/components/nota/nota.component').then(m =>m.NotaComponent)
+    loadComponent:()=> import('./domains/shared/components/nota/nota.component').then(m =>m.NotaComponent),
   },
   {
     path:'creditcard',
-    loadComponent: () => import('./domains/pages/creditsmenu/pages/creditcard/creditcard.component').then(m => m.CreditcardComponent)
+    loadComponent: () => import('./domains/pages/creditsmenu/pages/credit-card/credit-card.component').then(m => m.CreditCardComponent)
   },
   {
     path:'**',

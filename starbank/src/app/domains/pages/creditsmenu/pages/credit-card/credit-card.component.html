@@ -1,0 +1,35 @@
+<div class="atm-menu">
+  <div class="content-center">
+    <div class="showtop">
+      <div class="form-group">
+        <p>Limite de credito : {{ tdc()?.creditLimit }}</p>
+        <p>Credito disponible : {{ tdc()?.creditAvailable }}</p>
+        <p>Saldo por pagar: {{ saldo }}</p>
+      </div>
+    </div>
+    <div class="login-container">
+      <h1>ABONO DE CREDITO</h1>
+      <form >
+        <div class="form-group">
+          @if(alertaDivisor)
+          {
+            <div class="error-message">
+              <p>        Cantidad a pagar no válida.        </p>
+            </div>
+          }
+          <label for="pago">Monto a pagar:</label>
+          <input type="text" [value]="dinero()" placeholder="Dígite el monto a pagar" (change)="changeDinero($event)">
+          <button (click)="abonoTarjeta()">abonar</button>
+        </div>
+      </form>
+    </div>
+    <div class="login-container">
+      <h1>PAGO TOTAL</h1>
+      <form >
+        <div class="form-group">
+          <button (click)="pagarTarjeta()">Pagar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

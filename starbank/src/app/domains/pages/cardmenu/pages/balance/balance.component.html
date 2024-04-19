@@ -21,17 +21,14 @@
           <h2>Operaciones</h2>
           <button id="retirar-btn" (click)="retirarDinero()">Retirar</button>
 
-          @if(valoresCC()?.creditLimit)
-          {
-            <button id="depositar-btn" (click)="pagarCredito()">Pagar credito de la tarjeta</button>
-          }
+
           @if(valoresDC()?.balance)
           {
             <button id="depositar-btn" (click)="depositarDebito()">Depositar</button>
           }
 
           <!-- Botón de regreso -->
-          <a href="#" class="regresar-btn">Regresar</a>
+          <a class="regresar-btn" (click)="regresar()">Regresar</a>
       </div>
     </div>
   </div>

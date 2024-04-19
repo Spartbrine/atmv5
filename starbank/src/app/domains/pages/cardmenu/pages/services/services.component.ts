@@ -1,5 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ServiceDebt } from '../../../../shared/models/service-debt.model';
+import { routes } from '../../../../../app.routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-services',
@@ -10,7 +12,7 @@ import { ServiceDebt } from '../../../../shared/models/service-debt.model';
 })
 export class ServicesComponent {
   services = signal<ServiceDebt[]>([])
-
+  router = inject(Router)
   ngOnInit()
   {
     console.log('ejecutando init de services')
@@ -29,4 +31,33 @@ export class ServicesComponent {
       this.services.set(JSONservs)
     }
   }
+
+  redireccionarClick(nombre : string)
+  {
+    if (nombre == 'CFE')
+    {
+      this.router.navigate(['services/cfe'])
+    }
+    else if(nombre == 'NETFLIX')
+    {
+      this.router.navigate(['services/netflix'])
+
+    }
+    else if(nombre == 'TELMEX')
+    {
+      this.router.navigate(['services/telmex'])
+
+    }
+    else if(nombre == 'JAPAY')
+    {
+      this.router.navigate(['services/japay'])
+
+    }
+    else if(nombre == 'SPOTIFY')
+    {
+      this.router.navigate(['services/spotify'])
+
+    }
+  }
+
 }

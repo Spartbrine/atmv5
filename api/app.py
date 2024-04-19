@@ -60,22 +60,21 @@ app.register_blueprint(generalQuery_bp)
 #     c.save()
 #     return nombre_archivo
 
-# def enviar_correo(destinatario, asunto, cuerpo, adjunto=None):
-#     msg = Message(asunto, sender='tu_correo@example.com', recipients=[destinatario])
-#     msg.body = cuerpo
-#     if adjunto:
-#         with app.open_resource(adjunto) as adjunto_pdf:
-#             msg.attach(adjunto, 'application/pdf', adjunto_pdf.read())
-#     mail.send(msg)
+def enviar_correo(destinatario, asunto, cuerpo, adjunto=None):
+    msg = Message(asunto, sender='tu_correo@example.com', recipients=[destinatario])
+    msg.body = cuerpo
+    if adjunto:
+        with app.open_resource(adjunto) as adjunto_pdf:
+            msg.attach(adjunto, 'application/pdf', adjunto_pdf.read())
+    mail.send(msg)
 
-# @app.route('/enviar-correo')
-# def enviar_correo_electronico():
-#     destinatario = 'destinatario@example.com'
-#     asunto = '¡Nota generada!'
-#     cuerpo = 'Adjunto encontrarás la nota generada.'
-#     adjunto_pdf = generar_pdf()
-#     enviar_correo(destinatario, asunto, cuerpo, adjunto_pdf)
-#     return 'Correo electrónico enviado correctamente.'
+@app.route('/enviar-correo')
+def enviar_correo_electronico():
+    destinatario = 'destinatario@example.com'
+    asunto = '¡Nota generada!'
+    cuerpo = 'Adjunto encontrarás la nota generada.'
+    enviar_correo(destinatario, asunto, cuerpo)
+    return 'Correo electrónico enviado correctamente.'
 
 if __name__ == '__main__':
     app.run(debug=True)

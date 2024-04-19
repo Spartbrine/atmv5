@@ -1,0 +1,85 @@
+body {
+  background-color: #6cc09c;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.content-center {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.content-center h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Espacio superior para separar del título */
+}
+
+.service-button {
+  border: 2px solid #2f6648;
+  border-radius: 5px;
+  background-color: #9bd4af;
+  color: #333;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.service-button:last-child {
+  margin-right: 0;
+}
+
+.service-button:hover {
+  background-color: #7ec395;
+  border-color: #1e3a29;
+}
+
+.service-button:active {
+  background-color: #6aa984;
+  border-color: #142d21;
+}
+
+.service-content {
+  display: flex;
+  align-items: center;
+}
+
+.service-image {
+  width: 45px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.service-text {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  color: #333;
+}
+p{
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  color: #333;
+}
+
+.atm-menu {
+  background-color: #6cc09c;
+  min-height: 100vh;
+  padding-top: 50px;
+}

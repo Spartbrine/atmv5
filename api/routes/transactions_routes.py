@@ -4,7 +4,7 @@ from data.conection import conectar_bd
 from data.conection import verTodosDatos
 from data.conection import insertarDatos3Columnas
 from data.conection import verDato
-
+from data.conection import ContarDato
 from datetime import date
 tabla = 'transactions'
 
@@ -28,11 +28,25 @@ def obtener_transacciones_id(id_user):
     else:
         return jsonify({"mensaje": "Transaccion no encontrada"}), 404
 
+
+#Contador para las transacciones
+@transactions_bp.route('/transacciones/fecha/<int:id_user>', methods=['GET'])
+def contar_transacciones_usuario(id_user):
+    conexion = conectar_bd()
+    cursor = conexion.cursor()
+    transacciones = ContarDato(cursor, id_user)
+    conexion.close()
+    if transacciones:
+        return jsonify(transacciones)
+    else:
+        return jsonify({"mensaje": "Transaccion no encontrada"}), 404
+
+
 @transactions_bp.route('/transacciones', methods=['POST'])
 def generar_transaccion():
     data = request.json  
-    id_usuario = data.get('id_usuario')
-    tipo = data.get('tipo')
+    id_usuario = data.get('id_user')
+    tipo = data.get('typeTransaction')
 
     conexion = conectar_bd()
 

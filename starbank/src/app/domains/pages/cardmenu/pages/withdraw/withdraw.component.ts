@@ -19,10 +19,12 @@ import { Router } from '@angular/router';
 })
 
 export class WithdrawComponent {
+  dineroDp : number = 5500;
+
   retirar : number = 0;
   alertaDivisor : boolean = false
   permitirTransaccion : boolean = false
-  dinero = signal<Number>(0);
+  dinero = signal(0);
 
   router = inject(Router);
 
@@ -74,7 +76,11 @@ export class WithdrawComponent {
   {
     const input = event.target as HTMLInputElement
     const valornuevo = parseInt(input.value)
-    if(valornuevo % 50 == 0)
+    if(valornuevo >= 9000)
+      {
+        alert('No puede retirar más de 9000$')
+      }
+    if(valornuevo % 50 == 0 && valornuevo<= 9000 && valornuevo !> this.dineroDp) //Para verificar que sea menor a 9000 y no se pase del dinero disponible
     {
       this.dinero.set(valornuevo);
       this.permitirTransaccion = true
@@ -84,11 +90,14 @@ export class WithdrawComponent {
     }
   }
 
+
   submitRetiro()
   {
     if(this.valoresDC() && this.permitirTransaccion == true)
     {
       let dinro  = this.dinero()
+      this.dineroDp= this.dineroDp - this.dinero()
+
       if(dinro)
       {
         let valor

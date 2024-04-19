@@ -21,6 +21,16 @@ export class CardmenuComponent {
   ngOnInit()
   {
     this.recuTarjetaService.asignarValoresLS();
+    let tr = localStorage.getItem('transacciones')
+    if(tr)
+    {
+      let trVal = parseInt(JSON.parse(tr))
+      if( trVal >= 5 )
+      {
+        alert('Lo sentimos, no le quedan transacciones')
+        this.router.navigate(['/'])
+      }
+    }
   }
 
   retirarDinero()
