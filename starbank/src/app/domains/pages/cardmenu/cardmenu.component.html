@@ -10,34 +10,38 @@
             @if(tarjeta?.typeCard == 'DEBITO')
             {
               <li>
-                <a (click)="retirarDinero()" class="button">Retirar dinero</a>
+                <a routerLink="/cards/withdraw" class="button">Retirar dinero</a>
               </li>
               <li>
-                <a href="/balance" class="button">Consultar saldo</a>
+                <a routerLink="/cards/balance"  class="button">Consultar saldo</a>
               </li>
               <li>
-                <a href="/deposit" class="button">Depositar dinero</a>
+                <a routerLink="/cards/deposit" class="button">Depositar dinero</a>
               </li>
             }
             @if(tarjeta?.typeCard=='CREDITO')
             {
 
               <li>
-                <a href="/creditcard" class="button">Pagar tarjeta de crédito</a>
+                <a routerLink="/cards/creditcard" class="button">Pagar tarjeta de crédito</a>
               </li>
             }
             <li>
-              <a href="/credits" class="button">Pagar créditos</a>
+              <a routerLink="/cards/credits" class="button">Pagar créditos</a>
             </li>
             <li>
-              <a href="/services" class="button">Pagar servicios</a>
+              <a routerLink="/services" class="button">Pagar servicios</a>
             </li>
             <li>
-              <a href="/changenip" class="button">Cambiar nip</a>
+              <a routerLink="/cards/changenip" class="button">Cambiar nip</a>
             </li>
             <li>
-              <a href="/" class="button">Regresar</a>
+              <a routerLink="/cards/statement" class="button">Estado de cuenta</a>
             </li>
+            <li>
+              <a routerLink="/" class="button">Regresar</a>
+            </li>
+
           </ul>
         </div>
       </div>

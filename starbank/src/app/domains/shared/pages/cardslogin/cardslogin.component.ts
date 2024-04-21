@@ -37,7 +37,7 @@ export class CardsloginComponent{
       console.log('tarjeta', this.tarjeta().card);
       if (validacion == true) {
         this.tarjetaNoEncontrada = false;
-        this.router.navigate(['/niplogin']);
+        this.router.navigate(['cards/niplogin']);
       } else if (validacion == false) {
         this.tarjetaNoEncontrada = true;
       }

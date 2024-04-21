@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { GeneralCreditsaveService } from '../../shared/services/comunicadores/general-creditsave.service';
-import { GeneralCredit } from '../../shared/models/general-credit.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -84,16 +83,16 @@ export class CreditsmenuComponent {
 
   pagarMovil()
   {
-    this.router.navigate(['/automovil'])
+    this.router.navigate(['/cards/credits/car'])
   }
 
   pagarHipo()
   {
-    this.router.navigate(['/hipotecario'])
+    this.router.navigate(['/cards/credits/mortgage'])
   }
 
   pagarEst()
   {
-    this.router.navigate(['/estudiantil'])
+    this.router.navigate(['/cards/credits/student'])
   }
 }

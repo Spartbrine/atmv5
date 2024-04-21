@@ -1,0 +1,22 @@
+<div class="atm-menu">
+  <div class="content-center">
+    <h1>Retirar dinero</h1>
+    @if(alertaDivisor)
+    {
+      <div class="error-message">
+        <p>        Cantidad a retirar no válida.        </p>
+      </div>
+    }
+    <div class="form-container">
+      <form>
+        <div>
+          <label for="retirar" class="form-label">Monto a retirar:</label>
+          <div class="input-group">
+            <input type="text"[value]="dinero()" placeholder="0000$" (input)="changeDinero($event)" class="input-field">
+            <button type="submit" (click)="submitRetiro()" class="service-button">retirar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
