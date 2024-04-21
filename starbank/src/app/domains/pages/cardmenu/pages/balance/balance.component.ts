@@ -112,13 +112,13 @@ export class BalanceComponent {
   depositarDebito()
   {
     this.postTr('CONSULTA + DÉPOSITO')
-    this.router.navigate(['/deposit']);
+    this.router.navigate(['/cards/deposit']);
   }
 
   retirarDinero()
   {
     this.postTr('CONSULTA + RETIRO')
-    this.router.navigate(['/withdraw']);
+    this.router.navigate(['/cards/withdraw']);
   }
 
   transacciones = inject(TransactionsService)

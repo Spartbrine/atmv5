@@ -22,11 +22,37 @@ export class HomeComponent {
   ngOnInit()
   {
     console.log('Estas en home');
-    localStorage.clear();
+    localStorage.removeItem('Creditos')
+    localStorage.removeItem('servToPay')
+    localStorage.removeItem('socio')
+    localStorage.removeItem('tarjeta')
+    localStorage.removeItem('transacciones')
+    localStorage.removeItem('valdeb')
+    localStorage.removeItem('valcred')
+    localStorage.removeItem('Creditos_credautomovil')
+    localStorage.removeItem('Creditos_credestudiantil')
+    localStorage.removeItem('Creditos_credhipotecario')
+    localStorage.removeItem('deposito')
+    localStorage.removeItem('retiro')
+
+    let ComprobacionDinero = localStorage.getItem('dineroDp')
+    if(ComprobacionDinero) //Esto es para que sea "funcional" en el sentido de que si se hacen retiros se va descontando del localstorage
+    {                      //el dinero que se va retirando, para "meter dinero", como ya se tiene dinero (en este momento 60000)
+      console.log('dinero en el banco:', ComprobacionDinero)
+    }                       //pues no se va a agregar los 8000 al localstorage
+    else{
+      localStorage.setItem('dineroDp', '8000')
+
+    }
   }
   ngOnChanges()
   {
     console.log('Estas en home');
+    localStorage.clear()
+  }
+  ngAfterView()
+  {
+    localStorage.clear()
   }
   clickRoute(path: string) {
     this.router.navigate([path]);

@@ -18,7 +18,7 @@ import { error } from 'console';
 export class DepositComponent {
   alertaDivisor : boolean = false
   permitirTransaccion : boolean = false
-  dinero = signal<Number>(0);
+  dinero = signal('');
   recuDeb = inject(DebitCardsaveService);
   doDeposit = inject(DebitCardsService);
   card = this.recuDeb.recuValDeb()?.card;
@@ -30,7 +30,7 @@ export class DepositComponent {
     const valornuevo = parseInt(input.value)
     if(valornuevo % 50 == 0)
     {
-      this.dinero.set(valornuevo);
+      this.dinero.set(valornuevo.toString());
       this.permitirTransaccion = true
       this.alertaDivisor= false
     } else {

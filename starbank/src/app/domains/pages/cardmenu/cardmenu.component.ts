@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CardsloginComponent } from '../../shared/pages/cardslogin/cardslogin.component';
 import { FormsModule } from '@angular/forms';
 import { CardsaveService } from '../../shared/services/comunicadores/cardsave.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cardmenu',
   standalone: true,
-  imports: [CardsloginComponent, FormsModule],
+  imports: [CardsloginComponent, FormsModule, RouterLink],
   templateUrl: './cardmenu.component.html',
   styleUrl: './cardmenu.component.css'
 })
@@ -31,11 +31,13 @@ export class CardmenuComponent {
         this.router.navigate(['/'])
       }
     }
+    localStorage.removeItem('retiro')
+    localStorage.removeItem('deposito')
   }
 
   retirarDinero()
   {
-    this.router.navigate(['/withdraw']);
+    this.router.navigate(['/cards/withdraw']);
   }
 
 }
