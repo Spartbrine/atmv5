@@ -15,7 +15,7 @@ export class CreditCardsService {
   actualizarCredito(actVal : object)
   {
     console.log('actualizar credito actVal', actVal)
-    return this.http.put<creditCard>(`http://127.0.0.1:500/tarjetas/credito/`, actVal).pipe(
+    return this.http.put<creditCard>(`http://127.0.0.1:5000/tarjetas/credito`, actVal).pipe(
       catchError(this.handleError)
     )
   }

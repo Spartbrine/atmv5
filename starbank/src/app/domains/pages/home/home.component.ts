@@ -34,6 +34,7 @@ export class HomeComponent {
     localStorage.removeItem('Creditos_credhipotecario')
     localStorage.removeItem('deposito')
     localStorage.removeItem('retiro')
+    localStorage.removeItem('abono credito')
     localStorage.removeItem('servicio')
     localStorage.removeItem('pago de servicio')
     localStorage.removeItem('servicioAPagar')

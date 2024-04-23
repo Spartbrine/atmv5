@@ -60,7 +60,7 @@ export class CashPayComponent {
         this.partnerService.pagarDeuda(servicioPagado).subscribe()
         console.log('240405')
         this.postTr()
-        localStorage.setItem('pago de servicio', servicioPagado.debt.toString())
+        localStorage.setItem('pago de servicio', cantidad.toString())
         this.router.navigate(['/nota'])
       } else {
         alert('Cantidad no válida')

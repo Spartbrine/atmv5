@@ -7,13 +7,23 @@
             <h3>START BANK ATM</h3>
             @if(mov?.card)
             {
-              <p>Tarjeta: {{mov?.card || mov?.debt}}</p>
+              <p>Tarjeta: {{mov?.card }}</p>
             }
             <p>Sucursal: San Roque</p>
-            <p>{{movimiento}} de : {{mov?.new_balance}}$</p>
+            @if(movimiento == 'Abono')
+            {
+              <p> {{movimiento}} de: {{mov?.abono}} </p>
+              <p> Falta por pagar :  {{mov?.creditoFaltante}} </p>
+            }
+            @else {
+            <p>{{movimiento}} de : {{mov?.new_balance|| mov?.debt|| mov}}$</p>
+            }
             <p><i class="fas fa-clock timer-icon"></i> Cerrando sesión en <span>{{ tiempoRestante }}</span> segundos</p>
           <a href="/" class="salir">Salir</a>
+          @if(mov?.card)
+          {
           <a href="/cards" class="salir">Seguir realizando transacciones</a>
+          }
         </div>
       </form>
     </div>

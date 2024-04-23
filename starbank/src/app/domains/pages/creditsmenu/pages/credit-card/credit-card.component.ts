@@ -6,6 +6,7 @@ import { Card } from '../../../../shared/models/card.model';
 import { TransactionsService } from '../../../../shared/services/solicitudes/transactions.service';
 import { Partner } from '../../../../shared/models/partner.model';
 import { Transaction } from '../../../../shared/models/transaction.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-credit-card',
@@ -22,6 +23,7 @@ export class CreditCardComponent {
   alertaDivisor : boolean = false
   dinero = signal('');
   permitirTransaccion : boolean = false
+  router = inject(Router)
   saldo = 0
 
   ngOnInit()
@@ -45,25 +47,35 @@ export class CreditCardComponent {
 
   abonoTarjeta()
   {
-    this.postTr('ABONO A TARJETA CREDITO');
     console.log('Abonando');
     let valores = localStorage.getItem('valcred');
+    console.log('Los valores del abono son:', valores)
     if(valores)
     {
       let tarjetaValores : creditCard[] = JSON.parse(valores);
       let objeto = {
-        card: tarjetaValores[0].card,
-        creditAvailable: parseInt(tarjetaValores[0].creditAvailable) + this.dinero()
+        "card": tarjetaValores[0].card,
+        "creditAvailable": parseInt(tarjetaValores[0].creditAvailable) + parseInt(this.dinero())
       }
+      console.log('Credi')
       console.log('Objeto enviado', objeto);
-      this.creditSv.actualizarCredito(objeto);
+      if(this.creditSv.actualizarCredito(objeto).subscribe())
+      {
+        this.postTr('PAGO DE ABONO A TARJETA CREDITO');
+        console.log('Abono completo')
+        console.log('EL nuevo credito disponible es:', objeto.creditAvailable)
+        let obj = {
+          abono: this.dinero(),
+          creditoFaltante: parseInt(tarjetaValores[0].creditLimit) - objeto.creditAvailable
+        }
+        localStorage.setItem('abono credito', JSON.stringify(obj))
+        this.router.navigate(['/nota'])
+      }
     }
-
   }
 
   pagarTarjeta()
   {
-    this.postTr('PAGO TOTAL TARJETA CREDITO');
     console.log('pagando');
     let valores = localStorage.getItem('valcred');
     if(valores)
@@ -71,10 +83,16 @@ export class CreditCardComponent {
       let tarjetaValores : creditCard[] = JSON.parse(valores);
       let objeto = {
         card: tarjetaValores[0].card,
-        creditAvailable: parseInt(tarjetaValores[0].creditLimit) - parseInt(tarjetaValores[0].creditAvailable)
+        creditAvailable: parseInt(tarjetaValores[0].creditLimit)
       }
       console.log('Objeto enviado', objeto)
-      this.creditSv.actualizarCredito(objeto)
+      if(this.creditSv.actualizarCredito(objeto).subscribe())
+      {
+        this.postTr('PAGO TOTAL TARJETA CREDITO');
+        console.log('Pago completado')
+        localStorage.setItem('pago credito', JSON.stringify(parseInt(tarjetaValores[0].creditLimit)-parseInt(tarjetaValores[0].creditAvailable)))
+        this.router.navigate(['/nota'])
+      }
     }
   }
 

@@ -42,7 +42,8 @@ export class NotaComponent {
   recuMov() : MoviDeb | null
   {
     const jsonRetiro = localStorage.getItem('retiro')
-
+    const jsonPagoCredito = localStorage.getItem('pago credito')
+    const jsonAbonoCredito = localStorage.getItem('abono credito')
     const jsonDeposito = localStorage.getItem('deposito')
     const jsonPagoServicio = localStorage.getItem('pago de servicio')
     if(jsonDeposito)
@@ -51,6 +52,20 @@ export class NotaComponent {
       const movi  = JSON.parse(jsonDeposito);
       console.log('movi general',movi)
       return movi;
+    }
+    else if (jsonPagoCredito)
+    {
+      this.movimiento = 'Pago total'
+      const movi  = JSON.parse(jsonPagoCredito);
+      return movi;
+
+    }
+    else if (jsonAbonoCredito)
+    {
+      this.movimiento = 'Abono'
+      const movi  = JSON.parse(jsonAbonoCredito);
+      return movi;
+
     }
     else if(jsonRetiro)
     {
