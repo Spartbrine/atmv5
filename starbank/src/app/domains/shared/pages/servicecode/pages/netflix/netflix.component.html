@@ -9,13 +9,13 @@
           <h2>Tipo de servicio: {{servicio.typeService}}</h2>
           <h2>Plan: {{ servicio.cost }}</h2>
           <h2>Por pagar: {{ servicio.debt }}</h2>
+
           <h2>ID de contrato: {{ servicio.contract }}</h2>
           <h2>ID de usuario: {{ servicio.id_user }}</h2>
           <h2>Código de servicio: {{servicio.service_code}}</h2>
         }
 
         <button (click)="redirigirEfectivo()">Pagar en efectivo</button>
-        <button (click)="descontarTarjeta()">Pagar con tarjeta</button>
         <a class="regresar-btn" (click)="regresar()">Regresar</a>
 
       </div>

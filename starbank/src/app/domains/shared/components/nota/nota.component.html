@@ -3,9 +3,12 @@
     <div class="content-center">
       <form >
         <div class="form-group">
-            <h2>Retiro</h2>
+            <h2>{{movimiento.toUpperCase()}}</h2>
             <h3>START BANK ATM</h3>
-            <p>Tarjeta: {{mov?.card}}</p>
+            @if(mov?.card)
+            {
+              <p>Tarjeta: {{mov?.card || mov?.debt}}</p>
+            }
             <p>Sucursal: San Roque</p>
             <p>{{movimiento}} de : {{mov?.new_balance}}$</p>
             <p><i class="fas fa-clock timer-icon"></i> Cerrando sesión en <span>{{ tiempoRestante }}</span> segundos</p>

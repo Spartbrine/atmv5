@@ -1,12 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { ServiceDebt } from '../../../../shared/models/service-debt.model';
 import { routes } from '../../../../../app.routes';
-import { Router } from '@angular/router';
-
+import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './services.component.html',
   styleUrl: './services.component.css'
 })

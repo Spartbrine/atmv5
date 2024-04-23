@@ -10,7 +10,7 @@
       <form (ngSubmit)="submitCode()">
         <div class="form-group">
           <label for="nip">Código de servicio</label>
-          <input type="password" [value]="codigo()" placeholder="0000" (change)="changeCode($event)">
+          <input type="text" [value]="codigo()" placeholder="0000" (change)="changeCode($event)">
         </div>
         <div class="content-center">
         <button type="submit" (click)="submitCode()">INGRESAR</button>

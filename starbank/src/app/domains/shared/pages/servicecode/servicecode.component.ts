@@ -2,12 +2,12 @@ import { Component, inject, signal } from '@angular/core';
 import { ServicesService } from '../../services/solicitudes/services.service';
 import { PartnersServicesService } from '../../services/solicitudes/partners-services.service';
 import { ServiceDebt } from '../../models/service-debt.model';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-servicecode',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './servicecode.component.html',
   styleUrl: './servicecode.component.css'
 })
@@ -30,32 +30,42 @@ export class ServicecodeComponent {
     let servJSONstring = localStorage.getItem('servicio')
     if(servJSONstring)
     {
-      let servicioAsign : ServiceDebt = JSON.parse(servJSONstring)
+      let servicioAsign : ServiceDebt[] = JSON.parse(servJSONstring)
+      if(servicioAsign[0].debt <= 0)
+      {
+        alert('La deuda ya esta pagada')
+      }
+      else
+      {
+        console.log('servicio asignado en el metodo', servicioAsign[0].service_code)
       let verificacion = this.verifyCode(servicioAsign)
-      if(servicioAsign.name)
+      console.log('verificacion', verificacion)
+      if(servicioAsign[0].name)
       {
         if(verificacion == true)
           {
-            this.router.navigate([`/${servicioAsign.name.toLowerCase()}`])
+            this.router.navigate([`servicecode/${servicioAsign[0].name.toLowerCase()}`])
           }
+      }
       }
     }
   }
 
-  getCode()
+   getCode()
   {
 
     this.servicePartServ.getOneDebtUSr(this.codigo()).subscribe({
       next:(valor) =>{
         console.log(valor)
         let JSONvalor = JSON.stringify(valor)
+        console.log('servicio encontrado en getCode', valor)
         localStorage.setItem('servicio',JSONvalor)
       }
     })
   }
-  verifyCode(servicio : ServiceDebt)
+  verifyCode(servicio : ServiceDebt[])
   {
-    if(this.codigo() == servicio.service_code)
+    if(this.codigo() == servicio[0].service_code)
     {
       return true
     }

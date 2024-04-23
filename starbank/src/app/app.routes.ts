@@ -96,7 +96,32 @@ export const routes: Routes = [
   },
   {
     path:'servicecode', //Para cuando solo quiere pagar sin logearse
-    loadComponent: () => import('./domains/shared/pages/servicecode/servicecode.component').then(m => m.ServicecodeComponent)
+    children: [
+      {
+        path:'',
+        loadComponent: () => import('./domains/shared/pages/servicecode/servicecode.component').then(m => m.ServicecodeComponent)
+      },
+      {
+        path:'cfe',
+        loadComponent:()=>import('./domains/shared/pages/servicecode/pages/cfe/cfe.component').then(m => m.CfeComponent)
+      },
+      {
+        path:'netflix',
+        loadComponent:()=>import('./domains/shared/pages/servicecode/pages/netflix/netflix.component').then(m => m.NetflixComponent)
+      },
+      {
+        path:'spotify',
+        loadComponent:()=>import('./domains/shared/pages/servicecode/pages/spotify/spotify.component').then(m =>m.SpotifyComponent)
+      },
+      {
+        path:'japay',
+        loadComponent:()=>import('./domains/shared/pages/servicecode/pages/japay/japay.component').then(m =>m.JapayComponent)
+      },
+      {
+        path:'telmex',
+        loadComponent:()=>import('./domains/shared/pages/servicecode/pages/telmex/telmex.component').then(m => m.TelmexComponent)
+      }
+    ]
   },
   {
     path:'cards/credits',
