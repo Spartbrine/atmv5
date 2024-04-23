@@ -32,7 +32,7 @@ export class ServicesComponent {
     }
   }
 
-  redireccionarClick(nombre : string)
+  redireccionarClick(nombre? : string)
   {
     if (nombre == 'CFE')
     {

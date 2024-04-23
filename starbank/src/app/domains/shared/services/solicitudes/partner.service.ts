@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Partner } from '../../models/partner.model';
 import { HttpClient } from '@angular/common/http';
+import { ServiceDebt } from '../../models/service-debt.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,6 @@ export class PartnerService {
   {
     return this.http.get<Partner[]>(`http://127.0.0.1:5000/socios/${socio}`)
   }
+
 
 }

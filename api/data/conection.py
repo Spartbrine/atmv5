@@ -38,6 +38,13 @@ def verDato(cursor, tabla, condicion,id):
     
     return nombresColumnas
 
+def verYordenarTransacciones(cursor, tabla, condicion, id, orden):
+    consulta = f"SELECT * FROM {tabla} WHERE {condicion} = ? ORDER BY dateTransaction {orden}"
+    cursor.execute(consulta, (id,))
+    nombresColumnas = darNombres(cursor)
+    
+    return nombresColumnas
+
 def ContarDato(cursor, id):
     hoy = date.today()
     cursor.execute("SELECT COUNT(*) FROM transactions WHERE dateTransaction = ? AND id_user = ?", (hoy, id))

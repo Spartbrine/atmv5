@@ -52,6 +52,7 @@ export class PayservicesComponent
       }
     )
    }
+
    private getServiceById(id: string)  {
     this.servicesService.getServiceById(id)
     .subscribe({

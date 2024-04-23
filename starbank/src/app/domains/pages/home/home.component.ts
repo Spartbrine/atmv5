@@ -34,6 +34,9 @@ export class HomeComponent {
     localStorage.removeItem('Creditos_credhipotecario')
     localStorage.removeItem('deposito')
     localStorage.removeItem('retiro')
+    localStorage.removeItem('transacciones[]')
+    localStorage.removeItem('transaccionesASC[]')
+    localStorage.removeItem('transaccionesDESC[]')
 
     let ComprobacionDinero = localStorage.getItem('dineroDp')
     if(ComprobacionDinero) //Esto es para que sea "funcional" en el sentido de que si se hacen retiros se va descontando del localstorage

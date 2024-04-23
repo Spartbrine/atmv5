@@ -17,7 +17,15 @@ export class TransactionsService {
     return this.http.get<Transaction[]>('http://127.0.0.1:5000/transacciones/fecha/' + id_user)
 
   }
+  getTrAsc(id_user: string)
+  {
+    return this.http.get<Transaction[]>('http://127.0.0.1:5000/transacciones/asc/' + id_user  )
 
+  }
+  getTrDsc(id_user: string)
+  {
+    return this.http.get<Transaction[]>('http://127.0.0.1:5000/transacciones/desc/' + id_user  )
+  }
   //Para el post debo mandar el tipo de transaccion y el id del usuario
   postearTransaccion(transaccion : Transaction)
   {

@@ -1,0 +1,57 @@
+.atm-menu {
+  background-color: #6cc09c;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 50px;
+}
+h2{
+  background-color: #f2f2f2;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #2f6648;
+
+}
+
+th, td {
+  text-transform: uppercase;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+.service-button {
+  border: 2px solid #2f6648;
+  border-radius: 5px;
+  background-color: #9bd4af;
+  color: #333;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.service-button:hover {
+  background-color: #7ec395;
+  border-color: #1e3a29;
+}
+
+.service-button:active {
+  background-color: #6aa984;
+  border-color: #142d21;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Espacio superior para separar del título */
+}

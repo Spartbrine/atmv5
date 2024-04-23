@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ServiceDebt } from '../../../../../../shared/models/service-debt.model';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cfe',
   standalone: true,
@@ -30,5 +30,26 @@ export class CfeComponent {
       console.log('Servicio con datos', servicioExistente)
     }
 
+  }
+  redirigirEfectivo()
+  {
+    if(this.servicio)
+    {
+      let nombreLink = this.nombre.toLowerCase();
+      let obj = {
+        service_code : this.servicio.service_code,
+        debt : this.servicio.debt
+      }
+      localStorage.setItem('servicioAPagar', JSON.stringify(obj));
+      this.router.navigate([`/services/${nombreLink}/pagarEfectivo`]);
+    }
+  }
+
+  router = inject(Router);
+
+
+  regresar()
+  {
+    this.router.navigate(['/cards']);
   }
 }

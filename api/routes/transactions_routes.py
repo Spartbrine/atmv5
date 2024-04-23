@@ -5,9 +5,10 @@ from data.conection import verTodosDatos
 from data.conection import insertarDatos3Columnas
 from data.conection import verDato
 from data.conection import ContarDato
+from data.conection import verYordenarTransacciones
 from datetime import date
 tabla = 'transactions'
-
+#Obtener todas las transacciones
 @transactions_bp.route('/transacciones', methods=['GET'])
 def obtener_transacciones():
     conexion = conectar_bd()
@@ -17,6 +18,7 @@ def obtener_transacciones():
     conexion.close()
     return transacciones
 
+#Obtener las transacciones de un usuario
 @transactions_bp.route('/transacciones/<int:id_user>', methods=['GET'])
 def obtener_transacciones_id(id_user):
     conexion = conectar_bd()
@@ -41,7 +43,7 @@ def contar_transacciones_usuario(id_user):
     else:
         return jsonify({"mensaje": "Transaccion no encontrada"}), 404
 
-
+#Publicar transacciones 
 @transactions_bp.route('/transacciones', methods=['POST'])
 def generar_transaccion():
     data = request.json  
@@ -63,3 +65,26 @@ def generar_transaccion():
 
     return jsonify({'mensaje': mensaje}), status_code
 
+
+ #Para ver las transacciones con condicion, se me ocurrio hasta despues por lo que quedaron aca jeje
+@transactions_bp.route('/transacciones/asc/<int:id_user>', methods=['GET'])
+def obtener_transacciones_asc(id_user):
+    conexion = conectar_bd()
+    cursor = conexion.cursor()
+    transacciones = verYordenarTransacciones(cursor, tabla, 'id_user', id_user, 'ASC')
+    conexion.close()
+    if transacciones:
+        return jsonify(transacciones)
+    else:
+        return jsonify({"mensaje": "Transaccion no encontrada"}), 404
+
+@transactions_bp.route('/transacciones/desc/<int:id_user>', methods=['GET'])
+def obtener_transacciones_desc(id_user):
+    conexion = conectar_bd()
+    cursor = conexion.cursor()
+    transacciones = verYordenarTransacciones(cursor, tabla, 'id_user', id_user, 'DESC')
+    conexion.close()
+    if transacciones:
+        return jsonify(transacciones)
+    else:
+        return jsonify({"mensaje": "Transaccion no encontrada"}), 404

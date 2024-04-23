@@ -73,57 +73,22 @@ def crear_servicio():
 @partnersServices_bp.route('/pagarservicios', methods=['PUT'])
 def actualizar_servicio():
     data = request.json
-    id = data.get('id')
-    contract = data.get('contract')
-    cost = data.get('cost')
-    debt = data.get('debt')
-    id_user = data.get('id_user')
-    name = data.get('name')
-    typeService = data.get('typeService')
-
+    service_code = data.get('service_code')
     conexion = conectar_bd()
     cursor = conexion.cursor()
     mensaje = ""
     status_code = 500  # Por defecto, error
-    
-    if contract: 
-       
-        if cost:
-            if actualizarDatos(cursor, tabla, 'cost', cost, 'id', id):
-                mensaje = "Los datos fueron actualizados correctamente."
-                status_code = 200
-            else:
-                mensaje = "Error: No se pudieron actualizar los datos."
-        
-        if debt:
-            if actualizarDatos(cursor, tabla, 'debt', debt, 'id', id):
-                mensaje = "Los datos fueron actualizados correctamente."
-                status_code = 200
-            else:
-                mensaje = "Error: No se pudieron actualizar los datos."
-        
-        if id_user:
-            if actualizarDatos(cursor, tabla, 'id_user', id_user, 'id', id):
-                mensaje = "Los datos fueron actualizados correctamente."
-                status_code = 200
-            else:
-                mensaje = "Error: No se pudieron actualizar los datos."
-        
-        if name:
-            if actualizarDatos(cursor, tabla, 'name', name, 'id', id):
-                mensaje = "Los datos fueron actualizados correctamente."
-                status_code = 200
-            else:
-                mensaje = "Error: No se pudieron actualizar los datos."
-        if typeService:
-            if actualizarDatos(cursor, tabla, 'typeService', typeService, 'id', id):
-                mensaje = "Los datos fueron actualizados correctamente."
-                status_code = 200
-            else:
-                mensaje = "Error: No se pudieron actualizar los datos."
-    else:
-        mensaje = "Error: No se proporcionó un ID de contrato válido."
-    
-    conexion.close()
 
+    if service_code:
+        for campo, valor in data.items():
+            if campo != 'service_code':
+                if actualizarDatos(cursor, tabla, campo, valor, 'service_code', service_code):
+                    mensaje = "Los datos fueron actualizados correctamente."
+                    status_code = 200
+                else:
+                    mensaje = f"Error: No se pudieron actualizar los datos para el campo {campo}."
+                    break  # Detener el bucle si ocurre un error
+
+    conexion.close()
     return jsonify({'mensaje': mensaje}), status_code
+

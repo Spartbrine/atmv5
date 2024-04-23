@@ -32,9 +32,12 @@ export class ServicecodeComponent {
     {
       let servicioAsign : ServiceDebt = JSON.parse(servJSONstring)
       let verificacion = this.verifyCode(servicioAsign)
-      if(verificacion == true)
+      if(servicioAsign.name)
       {
-        this.router.navigate([`/${servicioAsign.name.toLowerCase()}`])
+        if(verificacion == true)
+          {
+            this.router.navigate([`/${servicioAsign.name.toLowerCase()}`])
+          }
       }
     }
   }

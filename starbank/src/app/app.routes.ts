@@ -34,6 +34,10 @@ export const routes: Routes = [
         loadComponent: () => import('./domains/shared/pages/cardslogin/cardslogin.component').then(m => m.CardsloginComponent)
       },
       {
+        path:'statement',
+        loadComponent: () => import('./domains/pages/cardmenu/pages/statement/statement.component').then(m=>m.StatementComponent)
+      },
+      {
         path:'niplogin',
         loadComponent: () => import ('./domains/shared/pages/niplogin/niplogin.component').then(m => m.NiploginComponent)
       },
@@ -43,7 +47,6 @@ export const routes: Routes = [
       }
     ]
   },
-
   {
     path:'services', //Este es para cuando ya tenemos a los socios
     children: [ //ASI xd
@@ -53,23 +56,41 @@ export const routes: Routes = [
       },
       {
         path:'cfe',
-        loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/cfe/cfe.component').then(m=>m.CfeComponent)
+        children:[
+        {path:'',loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/cfe/cfe.component').then(m=>m.CfeComponent)},
+        {path:'pagarEfectivo', loadComponent:()=>import('./domains/pages/cardmenu/pages/cash-pay/cash-pay.component').then(m=>m.CashPayComponent)}
+        ]
       },
       {
         path:'netflix',
-        loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/netflix/netflix.component').then(m=>m.NetflixComponent)
+        children:[
+          {path:'',loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/netflix/netflix.component').then(m=>m.NetflixComponent)},
+          {path:'pagarEfectivo', loadComponent:()=>import('./domains/pages/cardmenu/pages/cash-pay/cash-pay.component').then(m=>m.CashPayComponent)}
+          ]
       },
       {
         path:'japay',
-        loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/japay/japay.component').then(m=>m.JapayComponent)
+        children:[
+          {path:'',loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/japay/japay.component').then(m=>m.JapayComponent)},
+          {path:'pagarEfectivo', loadComponent:()=>import('./domains/pages/cardmenu/pages/cash-pay/cash-pay.component').then(m=>m.CashPayComponent)}
+          ]
+
       },
       {
         path:'spotify',
-        loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/spotify/spotify.component').then(m=>m.SpotifyComponent)
+        children:[
+          {path:'',loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/spotify/spotify.component').then(m=>m.SpotifyComponent)},
+          {path:'pagarEfectivo', loadComponent:()=>import('./domains/pages/cardmenu/pages/cash-pay/cash-pay.component').then(m=>m.CashPayComponent)}
+          ]
+
       },
       {
         path:'telmex',
-        loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/telmex/telmex.component').then(m=>m.TelmexComponent)
+        children:[
+          {path:'',loadComponent:()=>import('./domains/pages/cardmenu/pages/services/pages/telmex/telmex.component').then(m=>m.TelmexComponent)},
+          {path:'pagarEfectivo', loadComponent:()=>import('./domains/pages/cardmenu/pages/cash-pay/cash-pay.component').then(m=>m.CashPayComponent)}
+          ]
+
       }
     ]
   },

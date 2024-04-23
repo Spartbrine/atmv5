@@ -136,6 +136,22 @@ export class CardsaveService {
         }
       )
 
+      this.trService.getTrAsc(idU).subscribe({
+        next:(valor) => {
+          let transacc = JSON.stringify(valor)
+          localStorage.setItem('transaccionesASC[]', transacc)
+        }
+      })
+
+      this.trService.getTrDsc(idU).subscribe({
+        next:(valor) => {
+          let transacc = JSON.stringify(valor)
+          localStorage.setItem('transaccionesDESC[]', transacc)
+        }
+      })
+
+
+
 
     }
   }

@@ -3,6 +3,9 @@ import { CardsloginComponent } from '../../shared/pages/cardslogin/cardslogin.co
 import { FormsModule } from '@angular/forms';
 import { CardsaveService } from '../../shared/services/comunicadores/cardsave.service';
 import { Router, RouterLink } from '@angular/router';
+import { TransactionsService } from '../../shared/services/solicitudes/transactions.service';
+import { Partner } from '../../shared/models/partner.model';
+import { Transaction } from '../../shared/models/transaction.model';
 
 @Component({
   selector: 'app-cardmenu',
@@ -38,6 +41,34 @@ export class CardmenuComponent {
   retirarDinero()
   {
     this.router.navigate(['/cards/withdraw']);
+  }
+
+  transacciones = inject(TransactionsService)
+
+  verEstadoCuenta()
+  {
+    this.postTr('VER ESTADO DE CUENTA')
+  }
+
+  postTr(tipo: string)
+  {
+    console.log('postTr')
+    let valores = localStorage.getItem('socio')
+    if(valores)
+    {
+      let usr: Partner[]= JSON.parse(valores)
+      console.log(usr[0])
+      console.log('id usr', usr[0].id)
+      let tr : Transaction = {
+      id_user:  usr[0].id,
+      typeTransaction: tipo,
+
+    }
+      console.log('id del usuario', tr)
+
+      this.transacciones.postearTransaccion(tr).subscribe({})
+    }
+
   }
 
 }

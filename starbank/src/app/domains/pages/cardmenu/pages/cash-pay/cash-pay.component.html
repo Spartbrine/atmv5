@@ -1,0 +1,24 @@
+<div class="atm-menu">
+  <div class="center">
+    <div class="content-center">
+      <div class="align-top">
+        <h1>Pagar servicio</h1>
+      </div>
+      <div class="form-container">
+        @if(alertaDivisor)
+        {
+          <div class="error-message">
+            <p>        Cantidad a pagar no válida.        </p>
+          </div>
+        }
+        <form>
+          <label for="amount" class="form-label">Monto a pagar:</label>
+          <div class="input-group">
+            <input type="text" [value]="dinero()" class="input-field" placeholder="Ingrese el monto" (input)="changeDinero($event)">
+            <button type="submit" class="button" (click)="pagar()">Pagar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

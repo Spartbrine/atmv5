@@ -1,1 +1,33 @@
-<p>statement works!</p>
+<div class="atm-menu">
+  <section class="">
+    <h2>Estado de Cuenta</h2>
+    <div>
+      <select name="orden" id="">
+        <option (click)="cambiarOrden(1)">Ascendente</option>
+        <option (click)="cambiarOrden(0)">Descendente</option>
+      </select>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Tipo </th>
+            </tr>
+        </thead>
+        <tbody>
+          @for(transaccion of transaccions(); track transaccion)
+          {
+            <tr>
+              <td>{{transaccion.dateTransaction}}</td>
+              <td> {{transaccion.typeTransaction}}</td>
+            </tr>
+          }
+        </tbody>
+    </table>
+  </section>
+
+  <div class="button-container">
+    <li>
+      <a routerLink="/cards" class="service-button">Menú anterior</a>
+    </li>
+  </div></div>
