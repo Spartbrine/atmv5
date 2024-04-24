@@ -1,5 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { GeneralCreditsaveService } from '../../../../shared/services/comunicadores/general-creditsave.service';
+import { PartnersCreditsService } from '../../../../shared/services/solicitudes/partners-credits.service';
 
 @Component({
   selector: 'app-car-credit',
@@ -12,6 +14,11 @@ export class CarCreditComponent {
   dinero = signal('');
   permitirTransaccion : boolean = false
   alertaDivisor : boolean = false
+
+  ngOnInit()
+  {
+
+  }
 
   changeDinero(event : Event)
   {
