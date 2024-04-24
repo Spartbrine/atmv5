@@ -10,28 +10,34 @@
         <p>Deuda actual: {{ credito?.debt }}</p>
       </div>
     </div>
-    <div class="login-container">
-      <h1>Pago de mensualidad</h1>
-      <form >
-        <div class="form-group">
-          @if(alertaDivisor)
-          {
-            <div class="error-message">
-              <p>        Cantidad a pagar no válida.        </p>
-            </div>
-          }
-          <button (click)="abonoMensualidad()">abonar</button>
-        </div>
-      </form>
-    </div>
-    <div class="login-container">
-      <h1>Abono a capital</h1>
-      <form >
-        <div class="form-group">
-          <input type="text" [value]="dinero()" placeholder="Dígite el monto a pagar" (change)="changeDinero($event)">
-          <button (click)="abonoCapital()">Pagar</button>
-        </div>
-      </form>
-    </div>
+    @if (credito?.id == 5 || credito?.id == 7 || credito?.id == 14)
+    {
+      <div class="login-container">
+        <h1>Pago tradicional</h1>
+        <form >
+          <div class="form-group">
+            @if(alertaDivisor)
+            {
+              <div class="error-message">
+                <p>        Cantidad a pagar no válida.        </p>
+              </div>
+            }
+            <button (click)="abonoMensualidad()">abonar</button>
+          </div>
+        </form>
+      </div>
+    }
+    @if (credito?.id == 1 || credito?.id == 13 || credito?.id == 11)
+    {
+      <div class="login-container">
+        <h1>Contingente a ingresos</h1>
+        <form >
+          <div class="form-group">
+            <input type="text" [value]="dinero()" placeholder="Dígite el monto a pagar" (change)="changeDinero($event)">
+            <button (click)="abonoCapital()">Pagar</button>
+          </div>
+        </form>
+      </div>
+    }
   </div>
 </div>

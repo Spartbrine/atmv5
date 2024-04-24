@@ -16,7 +16,7 @@ export class StudentcreditComponent {
   dinero = signal('');
   permitirTransaccion : boolean = false
   alertaDivisor : boolean = false
-  creditos = localStorage.getItem('Creditos_credautomovil')
+  creditos = localStorage.getItem('Creditos_credestudiantil')
   partnerCreditoService = inject(PartnersCreditsService)
   credito : GeneralCredit | null = null
   mensualidad : number = 0
