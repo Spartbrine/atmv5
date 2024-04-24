@@ -5,9 +5,9 @@
     <h1>Pago de crédito</h1>
     <div class="showtop">
       <div class="form-group">
-        <p>Meses faltantes : {{ 2 }}</p>
-        <p>Deuda inicial : {{ 2 }}</p>
-        <p>Deuda actual: {{ 2 }}</p>
+        <p>Meses faltantes : {{ credito?.MonthsDebt }}</p>
+        <p>Deuda inicial : {{ credito?.initialDebt }}</p>
+        <p>Deuda actual: {{ credito?.debt }}</p>
       </div>
     </div>
     <div class="login-container">
@@ -20,7 +20,7 @@
               <p>        Cantidad a pagar no válida.        </p>
             </div>
           }
-          <button (click)="mensualidad()">abonar</button>
+          <button (click)="abonoMensualidad()">abonar</button>
         </div>
       </form>
     </div>

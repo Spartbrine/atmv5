@@ -14,4 +14,10 @@ export class PartnersCreditsService {
     const url = 'http://127.0.0.1:5000/pagarcreditos/'
     return this.http.get<GeneralCredit[]>(url + id)
   }
+
+  pagarCredito(actualizacion: object)
+  {
+    return this.http.put<GeneralCredit>('http://127.0.0.1:5000/pagarcreditos', actualizacion).pipe()
+  }
+
 }

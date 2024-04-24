@@ -46,6 +46,7 @@ export class NotaComponent {
     const jsonAbonoCredito = localStorage.getItem('abono credito')
     const jsonDeposito = localStorage.getItem('deposito')
     const jsonPagoServicio = localStorage.getItem('pago de servicio')
+    const jsonPagoCreditoGeneral = localStorage.getItem('pago de credito general')
     if(jsonDeposito)
     {
       this.movimiento = 'Déposito'
@@ -77,6 +78,12 @@ export class NotaComponent {
     {
       this.movimiento = 'Pago de servicio'
       const movi = JSON.parse(jsonPagoServicio)
+      console.log('movi general', movi)
+      return movi
+    } else if(jsonPagoCreditoGeneral)
+    {
+      this.movimiento = 'Pago de crédito general'
+      const movi = JSON.parse(jsonPagoCreditoGeneral)
       console.log('movi general', movi)
       return movi
     }

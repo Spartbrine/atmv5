@@ -36,6 +36,10 @@ export class CardmenuComponent {
     }
     localStorage.removeItem('retiro')
     localStorage.removeItem('deposito')
+    localStorage.removeItem('pago credito')
+    localStorage.removeItem('abono credito')
+    localStorage.removeItem('pago de servicio')
+    localStorage.removeItem('pago de credito general')
   }
 
   retirarDinero()

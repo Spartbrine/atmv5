@@ -15,6 +15,11 @@
               <p> {{movimiento}} de: {{mov?.abono}} </p>
               <p> Falta por pagar :  {{mov?.creditoFaltante}} </p>
             }
+            @else if (movimiento == 'Pago de crédito general')
+            {
+              <p> {{movimiento}} de: {{mov?.debt}} </p>
+              <p> Falta por pagar :  {{mov?.creditoFaltante}} </p>
+            }
             @else {
             <p>{{movimiento}} de : {{mov?.new_balance|| mov?.debt|| mov}}$</p>
             }

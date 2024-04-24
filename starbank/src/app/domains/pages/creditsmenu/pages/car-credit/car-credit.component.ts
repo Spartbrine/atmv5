@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { GeneralCreditsaveService } from '../../../../shared/services/comunicadores/general-creditsave.service';
 import { PartnersCreditsService } from '../../../../shared/services/solicitudes/partners-credits.service';
+import { GeneralCredit } from '../../../../shared/models/general-credit.model';
 
 @Component({
   selector: 'app-car-credit',
@@ -14,10 +15,14 @@ export class CarCreditComponent {
   dinero = signal('');
   permitirTransaccion : boolean = false
   alertaDivisor : boolean = false
-
+  creditos = localStorage.getItem('Creditos_credautomovil')
+  partnerCreditoService = inject(PartnersCreditsService)
+  credito : GeneralCredit | null = null
+  mensualidad : number = 0
   ngOnInit()
   {
-
+    this.getCredit()
+    this.calcularMensualidad()
   }
 
   changeDinero(event : Event)
@@ -33,14 +38,69 @@ export class CarCreditComponent {
       this.alertaDivisor = true
     }
   }
-  abonoCapital()
-  {
 
+  getCredit()
+  {
+    if(this.creditos)
+    {
+      let credito : GeneralCredit[] = JSON.parse(this.creditos)
+      if(credito)
+      {
+        this.credito = credito[0]
+        console.log('MEses a pagar', credito[0].MonthsDebt)
+      }
+    }
   }
 
-  mensualidad()
+  abonoCapital()
   {
+    console.log('Boton abono a capital')
+    if(parseInt(this.dinero()) <= this.mensualidad)
+    {
+      console.log('No paso el if')
+      alert(`El pago a capital debe ser mayor que su mensualidad que es: ${this.mensualidad}`)
+      if(this.credito)
+        {
+          let objeto = {
+            id: this.credito.id,
+            debt: this.credito.debt - parseInt(this.dinero())
+          }
+          console.log('Actualización enviada', objeto)
+          this.partnerCreditoService.pagarCredito(objeto).subscribe()
+          let objetoNota = {
+            debt: this.dinero,
+            creditoFaltante: objeto.debt
+          }
+          localStorage.setItem('pago')
+          this.router.navigate(['/nota'])
+        }
+    }
+  }
 
+  abonoMensualidad()
+  {
+    if(this.credito)
+    {
+      let objeto = {
+        id: this.credito.id,
+        debt: this.credito.debt - this.mensualidad
+      }
+      console.log('Actualización enviada', objeto)
+      this.partnerCreditoService.pagarCredito(objeto).subscribe()
+      this.router.navigate(['/nota'])
+    }
+  }
+
+  calcularMensualidad()
+  {
+    if(!this.credito){console.log('NO existio el credito')} else
+    {
+      let mesesNum =  parseInt(this.credito.MonthsDebt)
+      this.mensualidad = (((this.credito.debt * .14) /mesesNum) + (this.credito.debt/mesesNum) + ((this.credito.debt*.16)/mesesNum))
+      let mensualidadRedondeada = this.mensualidad.toFixed(2)
+      this.mensualidad = parseInt(mensualidadRedondeada)
+      console.log('Mensualidad calculada:', this.mensualidad)
+    }
   }
 
   router = inject(Router)
