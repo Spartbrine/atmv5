@@ -56,10 +56,6 @@ export class StudentcreditComponent {
   abonoCapital()
   {
     console.log('Boton abono a capital')
-    if(parseInt(this.dinero()) <= this.mensualidad)
-    {
-      console.log('No paso el if')
-      alert(`El pago a capital debe ser mayor que su mensualidad que es: ${this.mensualidad}`)
       if(this.credito)
         {
           let objeto = {
@@ -75,7 +71,6 @@ export class StudentcreditComponent {
           localStorage.setItem('pago de credito general', JSON.stringify(objetoNota))
           this.postTr('Abono a capital de credito')
           this.router.navigate(['/nota'])
-        }
     }
   }
 
