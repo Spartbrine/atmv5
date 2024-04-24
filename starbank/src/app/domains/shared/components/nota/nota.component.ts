@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MoviDeb } from '../../models/Movimiento';
 import { Router } from '@angular/router';
+import { SendmailService } from '../../services/solicitudes/sendmail.service';
 
 @Component({
   selector: 'app-nota',
@@ -13,6 +14,7 @@ export class NotaComponent {
   movimiento : string = ''
   mov : MoviDeb | null = null;
   tiempoRestante : number = 60;
+  enviarCorreoService = inject(SendmailService)
   router = inject(Router)
   ngOnInit()
   {
@@ -52,12 +54,15 @@ export class NotaComponent {
       this.movimiento = 'Déposito'
       const movi  = JSON.parse(jsonDeposito);
       console.log('movi general',movi)
+      this.enviarCorreoService.enviarCorreo().subscribe()
       return movi;
     }
     else if (jsonPagoCredito)
     {
       this.movimiento = 'Pago total'
       const movi  = JSON.parse(jsonPagoCredito);
+      this.enviarCorreoService.enviarCorreo().subscribe()
+
       return movi;
 
     }
@@ -65,6 +70,8 @@ export class NotaComponent {
     {
       this.movimiento = 'Abono'
       const movi  = JSON.parse(jsonAbonoCredito);
+      this.enviarCorreoService.enviarCorreo().subscribe()
+
       return movi;
 
     }
@@ -73,18 +80,21 @@ export class NotaComponent {
       this.movimiento = 'Retiro'
       const movi = JSON.parse(jsonRetiro)
       console.log('movi general', movi)
+      this.enviarCorreoService.enviarCorreo().subscribe()
       return movi
     } else if(jsonPagoServicio)
     {
       this.movimiento = 'Pago de servicio'
       const movi = JSON.parse(jsonPagoServicio)
       console.log('movi general', movi)
+      this.enviarCorreoService.enviarCorreo().subscribe()
       return movi
     } else if(jsonPagoCreditoGeneral)
     {
       this.movimiento = 'Pago de crédito general'
       const movi = JSON.parse(jsonPagoCreditoGeneral)
       console.log('movi general', movi)
+      this.enviarCorreoService.enviarCorreo().subscribe()
       return movi
     }
     else {

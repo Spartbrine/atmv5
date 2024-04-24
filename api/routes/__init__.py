@@ -9,4 +9,5 @@ partnersCredits_bp = Blueprint('partnersCredits', __name__)
 transactions_bp = Blueprint('transactions', __name__)
 services_bp = Blueprint('services', __name__)
 generalQuery_bp = Blueprint('generalquery', __name__)
-from . import cards_bp , creditCards_bp , debitCards_bp , partners_bp, partnersServices_bp , partnersCredits_bp , transactions_bp, services_bp, generalQuery_bp
+sendmail_bp = Blueprint('sendmail', __name__)
+from . import cards_bp , creditCards_bp , debitCards_bp , partners_bp, partnersServices_bp , partnersCredits_bp , transactions_bp, services_bp, generalQuery_bp, sendmail_bp
