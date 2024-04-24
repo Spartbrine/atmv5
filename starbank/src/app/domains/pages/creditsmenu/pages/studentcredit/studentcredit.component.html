@@ -1,1 +1,37 @@
-<p>studentcredit works!</p>
+
+
+<div class="atm-menu">
+  <div class="content-center">
+    <h1>Pago de crédito</h1>
+    <div class="showtop">
+      <div class="form-group">
+        <p>Meses faltantes : {{ credito?.MonthsDebt }}</p>
+        <p>Deuda inicial : {{ credito?.initialDebt }}</p>
+        <p>Deuda actual: {{ credito?.debt }}</p>
+      </div>
+    </div>
+    <div class="login-container">
+      <h1>Pago de mensualidad</h1>
+      <form >
+        <div class="form-group">
+          @if(alertaDivisor)
+          {
+            <div class="error-message">
+              <p>        Cantidad a pagar no válida.        </p>
+            </div>
+          }
+          <button (click)="abonoMensualidad()">abonar</button>
+        </div>
+      </form>
+    </div>
+    <div class="login-container">
+      <h1>Abono a capital</h1>
+      <form >
+        <div class="form-group">
+          <input type="text" [value]="dinero()" placeholder="Dígite el monto a pagar" (change)="changeDinero($event)">
+          <button (click)="abonoCapital()">Pagar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
