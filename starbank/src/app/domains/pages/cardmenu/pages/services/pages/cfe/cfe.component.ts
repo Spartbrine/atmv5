@@ -39,7 +39,8 @@ export class CfeComponent {
       this.tarDeb = JSON.parse(deb)
     }
   }
-  getServ()
+
+  getServ() //METODO PARA FILTAR POR EL QUE QUIERO
   {
     let nomb = this.nombre
     if(this.servicios)
