@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { GeneralCreditsaveService } from '../../../../shared/services/comunicadores/general-creditsave.service';
 import { PartnersCreditsService } from '../../../../shared/services/solicitudes/partners-credits.service';
 import { GeneralCredit } from '../../../../shared/models/general-credit.model';
-
+import { Partner } from '../../../../shared/models/partner.model';
+import { Transaction } from '../../../../shared/models/transaction.model';
+import { TransactionsService } from '../../../../shared/services/solicitudes/transactions.service';
 @Component({
   selector: 'app-car-credit',
   standalone: true,
@@ -71,7 +73,8 @@ export class CarCreditComponent {
             debt: this.dinero,
             creditoFaltante: objeto.debt
           }
-          localStorage.setItem('pago')
+          localStorage.setItem('pago de credito general', JSON.stringify(objetoNota))
+          this.postTr('Abono a capital de credito')
           this.router.navigate(['/nota'])
         }
     }
@@ -87,6 +90,12 @@ export class CarCreditComponent {
       }
       console.log('Actualización enviada', objeto)
       this.partnerCreditoService.pagarCredito(objeto).subscribe()
+      let objetoNota = {
+        debt: this.mensualidad,
+        creditoFaltante: objeto.debt
+      }
+      localStorage.setItem('pago de credito general', JSON.stringify(objetoNota))
+      this.postTr('Abono de mensualidad de credito')
       this.router.navigate(['/nota'])
     }
   }
@@ -102,6 +111,24 @@ export class CarCreditComponent {
       console.log('Mensualidad calculada:', this.mensualidad)
     }
   }
+
+  transacciones = inject(TransactionsService)
+  postTr(tipo: string)
+  {
+    let valores = localStorage.getItem('socio')
+    if(valores)
+    {
+      let usr: Partner[] = JSON.parse(valores)
+      let transaccion : Transaction = {
+        id_user: usr[0].id,
+        typeTransaction:tipo
+      }
+
+      this.transacciones.postearTransaccion(transaccion).subscribe()
+    }
+  }
+
+
 
   router = inject(Router)
   cancelar()
