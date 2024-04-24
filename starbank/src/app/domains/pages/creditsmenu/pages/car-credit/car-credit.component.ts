@@ -26,6 +26,15 @@ export class CarCreditComponent {
       this.alertaDivisor = true
     }
   }
+  abonoCapital()
+  {
+
+  }
+
+  mensualidad()
+  {
+
+  }
 
   router = inject(Router)
   cancelar()

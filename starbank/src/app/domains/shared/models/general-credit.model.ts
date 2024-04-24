@@ -6,5 +6,6 @@ export interface GeneralCredit
   initialDebt:number;
   startContract:string;
   typeCredit:string;
+  MonthsDebt:string;
 
 }
